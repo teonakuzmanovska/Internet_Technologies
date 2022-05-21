@@ -1,0 +1,33 @@
+﻿@model it_aud6_mvc.Models.Client
+@{
+    ViewBag.Title = "NewClient";
+}
+
+<h2>Add a New Client</h2>
+
+@using (Html.BeginForm("InsertNewClient", "Movies"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Phone)
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", type = "number" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Legitimation)
+        @Html.TextBoxFor(c => c.Legitimation, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Age)
+        @Html.TextBoxFor(c => c.Age, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Address)
+        @Html.TextBoxFor(c => c.Address, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-default">Save</button>
+}

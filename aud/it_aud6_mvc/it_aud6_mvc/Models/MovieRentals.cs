@@ -7,7 +7,7 @@ namespace it_aud6_mvc.Models
 {
     public class MovieRentals
     {
-        public Movie movie { get; set; }
+        public Movie movies { get; set; }
         public List<Client> clients { get; set; }
 
         public MovieRentals()

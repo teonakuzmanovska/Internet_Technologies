@@ -1,18 +1,19 @@
 ﻿@model it_aud6_mvc.Models.MovieRentals
 @{
-    ViewBag.Title = "Random";
+    ViewBag.Title = "ShowMovie";
 }
 
-<h2>@Model.movie.Name</h2>
-<h3>Rating: @Model.movie.Rating</h3>
-<img src="@Model.movie.ImageUrl"/>
+<h2>@Model.movies.Name</h2>
+<h3>Rating: @Model.movies.Rating</h3>
+<img src="@Model.movies.ImageUrl"/>
+<h3>Clients: </h3>
 @{ 
     int i = 0;
     <ul>
         @foreach(var client in Model.clients)
         {
         <li>
-            <a href="ShowClient?id=@i">@client.Name, @client.Legitimation</a> 
+            <a href="/Movies/ShowClient?id=@i">@client.Name, @client.Legitimation</a> 
             @{
                 //koga kje imame baza nema potreba od /@i
              }

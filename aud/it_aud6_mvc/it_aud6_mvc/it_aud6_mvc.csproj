@@ -166,8 +166,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Movies\Random.cshtml" />
+    <Content Include="Views\Movies\ShowMovie.cshtml" />
     <Content Include="Views\Movies\ShowClient.cshtml" />
+    <Content Include="Views\Movies\GetAllMovies.cshtml" />
+    <Content Include="Views\Movies\NewMovie.cshtml" />
+    <Content Include="Views\Movies\EditMovie.cshtml" />
+    <Content Include="Views\Movies\NewClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
