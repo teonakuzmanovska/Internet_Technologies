@@ -1,0 +1,29 @@
+﻿@model it_lab3_mvc.Models.Friend
+@{
+    ViewBag.Title = "NewFriend";
+}
+
+<h2>Add a New Friend</h2>
+
+@using (Html.BeginForm("InsertNewFriend", "Friend"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.id)
+        @Html.TextBoxFor(f => f.id, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(m => m.id)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(f => f.Ime)
+        @Html.TextBoxFor(f => f.Ime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Ime)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(f => f.MestoZhiveenje)
+        @Html.TextBoxFor(f => f.MestoZhiveenje, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MestoZhiveenje)
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+    @Html.ActionLink("Back", "GetAllFriends")
+}

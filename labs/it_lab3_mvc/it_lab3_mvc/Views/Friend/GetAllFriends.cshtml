@@ -1,0 +1,35 @@
+﻿@model List<it_lab3_mvc.Models.Friend>
+@{
+    ViewBag.Title = "Friend";
+}
+
+<h2>Friend</h2>
+
+<table>
+    <tr>
+        <th>Friend ID</th>
+        <th>Friend Name</th>
+        <th>Place</th>
+        <th> </th>
+    </tr>
+    @{ 
+
+        int i = 0;
+        foreach (var friend in Model)
+        {
+        <tr>
+            <td>@friend.id</td>
+            <td>@friend.Ime</td>
+            <td>@friend.MestoZhiveenje</td>
+            <td>
+                @Html.ActionLink("Edit", "EditFriend", new { id = i })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteFriend", new { id = i })
+            </td>
+        </tr>
+            }
+            i++;
+        }
+
+</table>
