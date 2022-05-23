@@ -1,0 +1,20 @@
+﻿@model it_aud8_mvc.Models.MovieClient
+@{
+    ViewBag.Title = "InsertNewClient";
+}
+
+<h2>Insert New Client for the movie @Model.movie.Name</h2>
+
+@using (Html.BeginForm("InsertNewMovieCLient", "Movies"))
+{
+    <div class="form-group">
+        @Html.DropDownListFor(m => m.ClientId, new SelectList(Model.clients, "Id", "Name"),
+        new { @class = "form-control" })
+
+        @Html.HiddenFor( m => m.MovieId)
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Add client to movie</button>
+    </div>
+}

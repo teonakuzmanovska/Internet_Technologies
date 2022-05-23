@@ -1,0 +1,67 @@
+﻿@model it_aud8_mvc.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DownloadUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DownloadUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+    </dl>
+</div>
+
+<h3>Clients who rented the movie @Model.Name</h3>
+
+<div>
+    <ul>
+        @foreach (var client in Model.clients)
+        {
+            <li>
+                <a href="/Clients/Details/@client.Id">@client.Name, @client.Age</a>
+                @* Zoshto imame /@clients.Id ? *@
+            </li>
+        }
+    </ul>
+</div>
+
+@Html.ActionLink("Insert new movie client", "InsertNewClient", new { id = Model.Id })
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
