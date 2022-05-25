@@ -89,25 +89,9 @@ namespace it_aud9_mvc.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
-            {
-                return HttpNotFound();
-            }
-            return View(movie);
-        }
-
         // POST: Movies/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        //Ako ima [HttpPost] ne se brishe. Zoshto ?
+        public ActionResult Delete(int id)
         {
             Movie movie = db.Movies.Find(id);
             db.Movies.Remove(movie);
