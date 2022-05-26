@@ -1,0 +1,72 @@
+﻿@model IEnumerable<it_lab4_mvc.Models.Friend>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="friendsTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MestoZhiveenje)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MestoZhiveenje)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    <button data-friend-id="@item.id" class="btn btn-link js-delete">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            var table = $("#friendsTable").DataTable();
+            $("#friendsTable .js-delete").on("click", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this friend?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "api/FriendsApi/" + button.attr("data-friend-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+                        });
+                    }
+                })
+            })
+        })
+
+    </script>
+    
+    }
