@@ -108,3 +108,9 @@ C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_m
 C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\obj\Debug\it_aud9_mvc.pdb
 C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\obj\Debug\it_aud9_mvc.Migrations.initial.resources
 C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\obj\Debug\it_aud9_mvc.csproj.GenerateResource.cache
+C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\bin\System.Net.Http.Formatting.dll
+C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\bin\System.Web.Http.dll
+C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\bin\System.Web.Http.WebHost.dll
+C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\bin\System.Net.Http.Formatting.xml
+C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\bin\System.Web.Http.xml
+C:\Users\Lenovo\Documents\GitHub\Internet_Technologies\aud\it_aud9_mvc\it_aud9_mvc\bin\System.Web.Http.WebHost.xml

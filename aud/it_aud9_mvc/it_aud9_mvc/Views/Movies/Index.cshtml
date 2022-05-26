@@ -62,8 +62,8 @@
                 bootbox.confirm("Are you sure you want to delete this movie?", function (result) {
                     if (result) {
                         $.ajax({
-                            url: "/Movies/Delete/" + button.attr("data-movie-id"),
-                            method: "GET",
+                            url: "/api/MoviesApi/" + button.attr("data-movie-id"),
+                            method: "DELETE",
                             success: function () {
                                 table.row(button.parents("tr")).remove().draw();
                             },
