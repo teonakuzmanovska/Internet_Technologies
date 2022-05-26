@@ -23,10 +23,19 @@ namespace it_aud9_mvc.Controllers
         }
 
         // GET: api/MoviesApi/5
-        [ResponseType(typeof(Movie))]
+        [ResponseType(typeof(MoviesDTO))]
         public IHttpActionResult GetMovie(int id)
         {
-            Movie movie = db.Movies.Find(id);
+            MoviesDTO movie = db.Movies.Where(z => z.Id == id).Select(z => new MoviesDTO {
+                
+                Id = z.Id,
+                Name = z.Name,
+                DownloadUrl = z.DownloadUrl,
+                ImageUrl = z.ImageUrl,
+                Rating = z.Rating
+            
+            }).FirstOrDefault();
+
             if (movie == null)
             {
                 return NotFound();
