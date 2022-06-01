@@ -83,4 +83,11 @@ namespace it_lab4_mvc.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class AddUserToRoleModel
+    {
+        public string Email { get; set; }
+        public List<string> Roles { get; set; }
+        public string SelectedRole { get; set; }
+    }
 }

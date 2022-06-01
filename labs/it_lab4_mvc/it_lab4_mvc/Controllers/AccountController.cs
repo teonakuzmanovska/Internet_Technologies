@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using it_lab4_mvc.Models;
+using System.Collections.Generic;
 
 namespace it_lab4_mvc.Controllers
 {
@@ -132,6 +133,29 @@ namespace it_lab4_mvc.Controllers
                     ModelState.AddModelError("", "Invalid code.");
                     return View(model);
             }
+        }
+
+        public ActionResult AddUserToRole()
+        {
+            AddUserToRoleModel addUserToRoleModel = new AddUserToRoleModel();
+            addUserToRoleModel.Roles = new List<string>() { "Administrator", "Manager", "User" };
+            return View(addUserToRoleModel);
+        }
+        
+        [HttpPost]
+        public ActionResult AddUserToRole(AddUserToRoleModel addUserToRoleModel)
+        {
+            var email = addUserToRoleModel.Email;
+            var user = UserManager.FindByEmail(email);
+
+            if(user == null)
+            {
+                throw new HttpException(404, "There is no user with the email " + email);
+            }
+
+            UserManager.AddToRole(user.Id, addUserToRoleModel.SelectedRole);
+
+            return RedirectToAction("Index", "Friends");
         }
 
         //
