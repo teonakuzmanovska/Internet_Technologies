@@ -10,7 +10,7 @@ using it_lab4_mvc.Models;
 
 namespace it_lab4_mvc.Controllers
 {
-    [Authorize(Roles = "Administrator,Manager")]
+    [Authorize(Roles = "Administrator,Manager,User")]
     public class FriendsController : Controller
     {        
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -94,8 +94,27 @@ namespace it_lab4_mvc.Controllers
             return View(friend);
         }
 
+        // GET: Movies/Delete/5
         [Authorize(Roles = "Administrator")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Friend friend = db.Friends.Find(id);
+            if (friend == null)
+            {
+                return HttpNotFound();
+            }
+            return View(friend);
+        }
+
+        // POST: Movies/Delete/5
+        [Authorize(Roles = "Administrator")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
             Friend friend = db.Friends.Find(id);
             db.Friends.Remove(friend);

@@ -40,7 +40,8 @@
                     | @Html.ActionLink("Details", "Details", new { id = item.id }) |
                     @if (User.IsInRole("Administrator") || User.IsInRole("Manager"))
                     {
-                        <button data-friend-id="@item.id" class="btn btn-link js-delete">Delete</button>
+                        @*<button data-friend-id="@item.id" class="btn btn-link js-delete">Delete</button>*@
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
                     }
                 </td>
             </tr>
@@ -53,24 +54,27 @@
     <script>
 
         $(document).ready(function () {
-            var table = $("#friendsTable").DataTable();
-            $("#friendsTable .js-delete").on("click", function () {
-                var button = $(this);
-                bootbox.confirm("Are you sure you want to delete this friend?", function (result) {
-                    if (result) {
-                        $.ajax({
-                            url: "api/FriendsApi/" + button.attr("data-friend-id"),
-                            method: "DELETE",
-                            success: function () {
-                                table.row(button.parents("tr")).remove().draw();
-                            },
-                            error: function (err) {
-                                console.log(err);
-                            }
-                        });
-                    }
-                })
-            })
+
+            $("#friendsTable").DataTable();
+
+            //var table = $("#friendsTable").DataTable();
+            //$("#friendsTable .js-delete").on("click", function () {
+            //    var button = $(this);
+            //    bootbox.confirm("Are you sure you want to delete this friend?", function (result) {
+            //        if (result) {
+            //            $.ajax({
+            //                url: "/Friends/Delete/" + button.attr("data-friend-id"),
+            //                method: "GET",
+            //                success: function () {
+            //                    table.row(button.parents("tr")).remove().draw();
+            //                },
+            //                error: function (err) {
+            //                    console.log(err);
+            //                }
+            //            });
+            //        }
+            //    })
+            //})
         })
 
     </script>
