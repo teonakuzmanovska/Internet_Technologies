@@ -10,11 +10,14 @@ using it_lab4_mvc.Models;
 
 namespace it_lab4_mvc.Controllers
 {
+    [Authorize(Roles = "Administrator,Manager")]
     public class FriendsController : Controller
-    {
+    {        
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Friends
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Friends.ToList());
@@ -59,6 +62,7 @@ namespace it_lab4_mvc.Controllers
         }
 
         // GET: Friends/Edit/5
+        [Authorize(Roles = "Administrator,Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +82,7 @@ namespace it_lab4_mvc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,Manager")]
         public ActionResult Edit([Bind(Include = "id,Ime,MestoZhiveenje")] Friend friend)
         {
             if (ModelState.IsValid)
@@ -89,6 +94,7 @@ namespace it_lab4_mvc.Controllers
             return View(friend);
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             Friend friend = db.Friends.Find(id);
