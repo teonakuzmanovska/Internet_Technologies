@@ -61,7 +61,7 @@ namespace it_aud9_mvc.Controllers
         }
 
         // GET: Movies/Edit/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Editor")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
