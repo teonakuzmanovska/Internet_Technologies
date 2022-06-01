@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using it_aud9_mvc.Models;
+using System.Collections.Generic;
 
 namespace it_aud9_mvc.Controllers
 {
@@ -132,6 +133,30 @@ namespace it_aud9_mvc.Controllers
                     ModelState.AddModelError("", "Invalid code.");
                     return View(model);
             }
+        }
+
+        public ActionResult AddUserToRole()
+        {
+            AddToRoleModel addToRoleModel = new AddToRoleModel();
+            addToRoleModel.Roles = new List<string>() { "Administrator", "Editor", "User" };
+
+            return View(addToRoleModel);
+        }
+
+        [HttpPost]
+        // addToRoleModel e ispraten od formata
+        public ActionResult AddUserToRole(AddToRoleModel addToRoleModel)
+        {
+            var email = addToRoleModel.Email;
+            var user = UserManager.FindByEmail(email);
+
+            if(user == null)
+            {
+                throw new HttpException(404, "There is no user with email " + addToRoleModel.Email);
+            }
+            UserManager.AddToRole(user.Id, addToRoleModel.SelectedRole);
+
+            return RedirectToAction("Index", "Clients");
         }
 
         //

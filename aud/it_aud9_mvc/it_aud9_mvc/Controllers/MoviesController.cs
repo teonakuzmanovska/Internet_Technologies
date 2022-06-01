@@ -10,11 +10,13 @@ using it_aud9_mvc.Models;
 
 namespace it_aud9_mvc.Controllers
 {
+    [Authorize(Roles = "Administrator,Editor")]
     public class MoviesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Movies
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Movies.ToList());
@@ -59,7 +61,7 @@ namespace it_aud9_mvc.Controllers
         }
 
         // GET: Movies/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

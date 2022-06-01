@@ -46,7 +46,10 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    <btn data-movie-id="@item.Id" class="btn btn-link js-delete">Delete</btn>
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Editor"))
+                    {
+                        <btn data-movie-id="@item.Id" class="btn btn-link js-delete">Delete</btn>
+                    }
                 </td>
             </tr>
         }
